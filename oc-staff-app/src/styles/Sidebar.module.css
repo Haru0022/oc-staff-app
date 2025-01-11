@@ -1,0 +1,69 @@
+/* src/styles/Sidebar.module.css */
+
+/* サイドバーのスタイル */
+.sidebar {
+    width: 15%;
+    /*background-color: #333;*/
+    background-color: #100706;
+    color: #fff;
+    padding: 20px;
+    /*height: 100vh; /* 背景を画面下まで伸ばす */
+    height:500px;
+    transition: width 0.3s ease; /* 幅を変更するアニメーションを追加 */
+    border-radius: 40px;
+  }
+  
+  .menuItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .menuItem:hover .icon, .menuItem:hover .text {
+    color: #1da1f2; /* ホバー時の色変更 */
+  }
+  
+  .icon {
+    margin-right: 10px;
+    font-size: 1.5em; /* アイコンのサイズ */
+    color: #fff; /* アイコンの色 */
+  }
+  
+  /* 折りたたみ状態 */
+  .collapsed {
+    width: 21px; /* 折りたたみ時の幅 */
+  }
+  
+  /* 格納時のアイコンスタイル */
+  .collapsed .icon {
+    padding-right: 0;
+    margin-right: 0; /* 格納時に余白をなくす */
+  }
+  
+  /* サイドバー折りたたみのアニメーション */
+  .sidebar {
+    transition: width 0.3s ease; /* 幅が変わるときのアニメーション */
+  }
+  
+  /* サイドバーのアイコンとテキストのスタイル */
+  .text {
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none; /* アンダーラインを消す */
+    transition: color 0.3s ease; /* 文字色の変更のアニメーション */
+  }
+  
+  /* グローバルにリンクのアンダーラインを消す */
+  :global(a) {
+    text-decoration: none; /* リンクのアンダーラインを消す */
+  }
+  
+  /* サイドバーの折りたたみ時のボタン */
+  .toggleButton {
+    background: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
