@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FaHome, FaUsers, FaCalendarAlt, FaUserTie } from 'react-icons/fa'; // 必要なアイコンをインポート
-import styles from '../styles/Sidebar.module.css'; // styles/Sidebar.module.css が必要
+import { FaHome, FaUsers, FaCalendarAlt, FaUserTie } from 'react-icons/fa';
+import styles from '../styles/Sidebar.module.css';
 
 const Sidebar: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -21,7 +21,7 @@ const Sidebar: React.FC = () => {
       </Link>
 
       {/* 参加者一覧 */}
-      <Link href="/participants">
+      <Link href="/participant">
         <div className={styles.menuItem}>
           <FaUsers className={styles.icon} />
           {!isCollapsed && <span className={styles.text}>参加者一覧</span>}

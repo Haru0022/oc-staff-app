@@ -1,0 +1,108 @@
+/* ../styles/staffs.module.css */
+.container {
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 40px;
+    background-color: #F0F0F0;
+    height: calc(100vh - 40px); /* 画面の高さいっぱいを使う、上下paddingを引く */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .searchArea {
+    background-color: #fff;
+    border-radius: 40px;
+    margin-bottom: 10px;
+  }
+    
+  .title {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333; /* タイトルの色を濃くする */
+  }
+    
+    .searchBarContainer {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .searchBar {
+      display: flex;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 5px 10px;
+      background-color: #fff; /* 検索バーの背景を白くする */
+      width: 300px; /* 検索バーの幅を調整 */
+    }
+    
+    .searchInput {
+      border: none;
+      flex-grow: 1;
+      outline: none;
+      background-color: transparent; /* 入力フィールドの背景を透明にする */
+    }
+    
+    .searchButton {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .searchIcon {
+      width: 20px;
+      height: 20px;
+      color: #888; /* 検索アイコンの色を薄くする */
+    }
+    .tableArea {
+      background-color: #fff;
+      border-radius: 40px;
+      padding: 10px,0px,10px,10px;
+      overflow-y: auto; /* テーブルエリアをスクロール可能にする */
+      height: 550px; /*スクロールさせるテーブルの領域*/
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: #fff; /* テーブルの背景を白くする */
+      
+      /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* テーブルに影をつける */
+      
+    }
+    
+    .tableHeader th {
+      /*background-color: #f2f2f2;*/
+      padding: 15px;
+      text-align: left;
+      font-weight: bold;
+      /*border-bottom: 1px solid #ccc;*/
+      color: #555; /* ヘッダーの文字色を少し暗くする */
+    }
+    
+    .tableRow td {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      color: #333; /* 行の文字色を濃くする */
+    }
+    
+    .tableRow:nth-child(even) {
+      background-color: #fafafa; /* 偶数行に薄い背景色をつける */
+    }
+    
+    .detailButton {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    
+    .detailIcon {
+      width: 20px;
+      height: 20px;
+      color: #888; /* 詳細アイコンの色を薄くする */
+    }
