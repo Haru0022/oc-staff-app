@@ -5,7 +5,6 @@ import Sidebar from '../components/Sidebar'; // Sidebar コンポーネントを
 const Home: React.FC = () => {
   return (
     <div>
-      <Sidebar />
       <main style={{ marginLeft: '250px', padding: '20px' }}> {/* サイドバーの幅に合わせて調整 */}
         <h1>ホーム</h1>
         {/* ここにメインコンテンツを追加 */}

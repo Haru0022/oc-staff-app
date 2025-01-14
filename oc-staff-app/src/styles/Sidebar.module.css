@@ -2,13 +2,14 @@
 
 /* サイドバーのスタイル */
 .sidebar {
-    width: 15%;
+    width: 20%;
     /*background-color: #333;*/
     background-color: #100706;
     color: #fff;
     padding: 20px;
     /*height: 100vh; /* 背景を画面下まで伸ばす */
-    height:500px;
+    /*height:500px;*/
+    
     transition: width 0.3s ease; /* 幅を変更するアニメーションを追加 */
     border-radius: 40px;
   }
@@ -16,7 +17,7 @@
   .menuItem {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 15px 0;
   }
   
   .menuItem:hover .icon, .menuItem:hover .text {
