@@ -1,27 +1,39 @@
 import React from 'react';
-import styles from '../../styles/participants.module.css';
 import Link from 'next/link';
+import styles from '../../styles/openCampuses.module.css';
 
-// ダミーデータ
-const participantsData = [
+// オープンキャンパス一覧用ダミーデータ
+const openCampusesData = [
   {
     id: '1',
-    name: '伊藤 翔',
-    furigana: 'イトウ ショウ',
-    gender: '男性',
-    highSchool: '福島東稜高校',
-    grade: '2年',
+    title: '夏のオープンキャンパス',
+    date: '2024/8/1',
+    participantsCount: 50,
+    staffCount: 10
   },
-  // ... 必要に応じて他の参加者データも追加
+  {
+    id: '2',
+    title: '秋のオープンキャンパス',
+    date: '2024/10/15',
+    participantsCount: 80,
+    staffCount: 15
+  },
+  {
+    id: '3',
+    title: 'オンラインオープンキャンパス',
+    date: '2024/11/20',
+    participantsCount: 120,
+    staffCount: 5
+  },
+  // ... 必要に応じて他のオープンキャンパスデータも追加
 ];
 
-const Participants: React.FC = () => {
+const OpenCampuses: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.searchArea}>
-        <h1 className={styles.title}>参加者リスト</h1>
-        <div className={styles.searchBarContainer}>
-          <div className={styles.searchBar}>
+        <h1 className={styles.title}>オープンキャンパス一覧</h1>
+        <div className={styles.searchBar}>
             <input type="text" placeholder="検索..." className={styles.searchInput} />
             <button className={styles.searchButton}>
               <svg
@@ -39,32 +51,34 @@ const Participants: React.FC = () => {
               </svg>
             </button>
           </div>
-        </div>
+          {/* オープンキャンパス追加ボタン */}
+          <Link href="/openCampuses/add">
+            <button className={styles.addButton}>
+              オープンキャンパス追加
+            </button>
+          </Link>
       </div>
-      
+
       <div className={styles.tableArea}>
         <table className={styles.table}>
           <thead>
             <tr className={styles.tableHeader}>
-              <th>名前</th>
-              <th>フリガナ</th>
-              <th>性別</th>
-              <th>高校</th>
-              <th>学年</th>
+              <th>タイトル</th>
+              <th>年月日</th>
+              <th>参加者数</th>
+              <th>スタッフ数</th>
               <th>詳細</th>
             </tr>
           </thead>
           <tbody>
-            {participantsData.map((participant) => (
-              <tr key={participant.id} className={styles.tableRow}>
-                <td>{participant.name}</td>
-                <td>{participant.furigana}</td>
-                <td>{participant.gender}</td>
-                <td>{participant.highSchool}</td>
-                <td>{participant.grade}</td>
+            {openCampusesData.map((oc) => (
+              <tr key={oc.id} className={styles.tableRow}>
+                <td>{oc.title}</td>
+                <td>{oc.date}</td>
+                <td>{oc.participantsCount}</td>
+                <td>{oc.staffCount}</td>
                 <td>
-                  {/* 詳細ボタンを Link コンポーネントでラップ */}
-                  <Link href={`/participant/detail/${participant.id}`}>
+                  <Link href={`/openCampuses/detail/${oc.id}`}>
                     <button className={styles.detailButton}>
                       <svg
                         className={styles.detailIcon}
@@ -91,4 +105,4 @@ const Participants: React.FC = () => {
   );
 };
 
-export default Participants;
+export default OpenCampuses;

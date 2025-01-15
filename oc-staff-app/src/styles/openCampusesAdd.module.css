@@ -1,0 +1,144 @@
+.container {
+    padding: 20px;
+    margin-left: 20px; /* サイドバーとの間隔を調整 */
+    background-color: #f0f0f0;
+    border-radius: 30px;
+    height: calc(100vh - 40px); /* 上下パディングを考慮 */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    display: flex;
+    margin-bottom: 10px;
+    gap: 20px;
+    background-color: #ffffff;
+    border-radius: 40px;
+    padding: 20px 10px;
+  }
+  
+  .titleInputArea,
+  .memoInputArea {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    
+  }
+  
+  .titleInputArea label,
+  .memoInputArea label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 50px;
+    resize: vertical;
+  }
+  
+  .content {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+  }
+  
+  .tableArea {
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1; /* 残りのスペースを埋める */
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tableHeader th {
+    background-color: #fff;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: none;
+    color: #555;
+  }
+  
+  .tableRow td {
+    padding: 10px;
+    border-bottom: none;
+    color: #333;
+  }
+  
+  .rightArea {
+    /*display: flex;*/
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .importArea {
+    background-color: #ffffff; 
+    border-radius: 40px;
+    margin-bottom:10px;
+    padding: 40px 20px;
+  }
+  
+  .importButton {
+    background-color: #ffffff;
+    border: 1px dotted #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  
+  
+  .countArea {
+    background-color: #ffffff;
+    border-radius: 40px;
+    padding: 40px 20px;
+    margin-bottom:10px;
+  }
+  
+  .countArea p {
+    margin: 5px 0;
+  }
+  
+  .countArea span {
+    font-weight: bold;
+  }
+  
+  .registrationArea {
+    background-color: #008CBA; 
+    border-radius: 40px;
+
+    text-align: center;
+  }
+  .registerButton {
+
+    background-color: #008CBA;
+    padding: 40px 20px;
+    border: none;
+    color: white;
+    width: 100%;
+    border-radius: 40px;
+  }
+
+
+/*
+
+
+*/
