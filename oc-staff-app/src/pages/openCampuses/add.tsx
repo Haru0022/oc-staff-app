@@ -1,9 +1,31 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from '../../styles/openCampusesAdd.module.css';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../lib/firebase';
+import * as XLSX from 'xlsx';
+
+type Member = {
+  名前: string;
+  フリガナ: string;
+  性別: string;
+  高校名: string;
+  学年: string;
+  参加学科: string; // 変更
+  参加回数: string; //数値の場合あり
+  /*
+  同伴者: string;
+  同伴者人数: string; //数値の場合あり
+  */
+};
 
 const OpenCampusesAdd: React.FC = () => {
   const [title, setTitle] = useState('');
   const [memo, setMemo] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [importedData, setImportedData] = useState<Member[]>([]);
+  const router = useRouter();
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -13,20 +35,40 @@ const OpenCampusesAdd: React.FC = () => {
     setMemo(event.target.value);
   };
 
-  const handleImport = () => {
-    // TODO: Excel ファイルインポート処理を実装
-    alert('Excel ファイルインポート処理 (未実装)');
+  const handleImport = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null;
+    if (!file) {
+      alert("ファイルを選択してください");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      const data = event.target?.result;
+      if (!data) return;
+
+      const workbook = XLSX.read(data, { type: 'binary' });
+      const sheetName = workbook.SheetNames[0];
+      const sheet = workbook.Sheets[sheetName];
+      const members: Member[] = XLSX.utils.sheet_to_json(sheet);
+      console.log("インポートしたデータ (members):", members); // members 配列の内容をコンソールに出力
+      setImportedData(members); // インポートしたデータをステートに設定
+    };
+
+    reader.onerror = (error) => {
+      console.error("Error reading file: ", error);
+      setError('ファイルの読み込みに失敗しました');
+    };
+
+    reader.readAsBinaryString(file);
   };
 
-  const handleAddParticipant = () => {
-    // TODO: 参加者追加処理を実装
-    alert('参加者追加処理 (未実装)');
-  };
-
-  const handleRegister = () => {
+  const handleRegister = async () => {
     // TODO: 登録処理を実装
     alert('登録処理 (未実装)');
   };
+
+  
 
   return (
     <div className={styles.container}>
@@ -54,59 +96,64 @@ const OpenCampusesAdd: React.FC = () => {
 
       <div className={styles.content}>
         <div className={styles.tableArea}>
-          {/* 仮のテーブル */}
+          {/* インポートしたデータを表示するテーブル */}
           <table className={styles.table}>
             <thead>
               <tr className={styles.tableHeader}>
-                <th>名前</th>
+              <th>名前</th>
                 <th>フリガナ</th>
                 <th>性別</th>
-                <th>高校</th>
+                <th>高校名</th>
                 <th>学年</th>
-                <th></th>
+                <th>参加学科</th>
+                <th>参加回数</th>
+                {/* <th>同伴者</th> 削除 */}
+                {/* <th>同伴者人数</th> 削除 */}
+                {/* <th></th> 詳細ボタン用の空ヘッダ */}
               </tr>
             </thead>
             <tbody>
-              {/* 仮データ */}
-              <tr className={styles.tableRow}>
-                <td>伊藤 翔</td>
-                <td>イトウ ショウ</td>
-                <td>男性</td>
-                <td>福島東稜高校</td>
-                <td>2年</td>
-                <td></td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>伊藤 翔</td>
-                <td>イトウ ショウ</td>
-                <td>男性</td>
-                <td>福島東稜高校</td>
-                <td>2年</td>
-                <td></td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>伊藤 翔</td>
-                <td>イトウ ショウ</td>
-                <td>男性</td>
-                <td>福島東稜高校</td>
-                <td>2年</td>
-                <td></td>
-              </tr>
+              {importedData.map((member, index) => (
+                <tr key={index} className={styles.tableRow}>
+                  <td>{member.名前}</td>
+                  <td>{member.フリガナ}</td>
+                  <td>{member.性別}</td>
+                  <td>{member.高校名}</td>
+                  <td>{member.学年}</td>
+                  <td>{member.参加学科}</td>
+                  <td>{member.参加回数}</td>
+                  {/* <td>{member.同伴者}</td> 削除 */}
+                  {/* <td>{member.同伴者人数}</td> 削除 */}
+                  {/* <td></td> 詳細ボタン用の空セル */}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
 
         <div className={styles.rightArea}>
           <div className={styles.importArea}>
-            <button className={styles.importButton} onClick={handleImport}>ここでExcelファイルをインポート</button>
+            <input type="file" id="fileInput" accept=".xlsx, .xls" style={{ display: 'none' }} onChange={handleImport} />
+            <label htmlFor="fileInput" className={styles.importButton}>
+              ここでExcelファイルをインポート
+            </label>
           </div>
           <div className={styles.countArea}>
-            <p>参加者<span>1人</span></p>
-            <p>スタッフ<span>0人</span></p>
+            <p>
+              参加者<span>{importedData.length}人</span>
+            </p>
+            <p>
+              スタッフ<span>0人</span>
+            </p>
           </div>
-          <div className={styles.registrationArea}>
-            <button className={styles.registerButton} onClick={handleRegister}>登録</button>
-          </div>
+          <button
+            className={styles.registerButton}
+            onClick={handleRegister}
+            disabled={isLoading}
+          >
+            {isLoading ? '登録中...' : '登録'}
+          </button>
+          {error && <p className={styles.error}>{error}</p>}
         </div>
       </div>
     </div>
