@@ -1,144 +1,202 @@
 .container {
-    padding: 20px;
-    margin-left: 20px; /* サイドバーとの間隔を調整 */
-    background-color: #f0f0f0;
-    border-radius: 30px;
-    height: calc(100vh - 40px); /* 上下パディングを考慮 */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .header {
-    display: flex;
-    margin-bottom: 10px;
-    gap: 20px;
-    background-color: #ffffff;
-    border-radius: 40px;
-    padding: 20px 10px;
-  }
-  
-  .titleInputArea,
-  .memoInputArea {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    
-  }
-  
-  .titleInputArea label,
-  .memoInputArea label {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    height: 50px;
-    resize: vertical;
-  }
-  
-  .content {
-    display: flex;
-    gap: 20px;
-    height: 100%;
-  }
-  
-  .tableArea {
-    background-color: #fff;
-    border-radius: 30px;
-    padding: 20px;
-    overflow-y: auto;
-    flex: 1; /* 残りのスペースを埋める */
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .tableHeader th {
-    background-color: #fff;
-    padding: 10px;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: none;
-    color: #555;
-  }
-  
-  .tableRow td {
-    padding: 10px;
-    border-bottom: none;
-    color: #333;
-  }
-  
-  .rightArea {
-    /*display: flex;*/
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-  }
+  padding: 10px;
+  margin-left: 10px; /* サイドバーとの間隔を調整 */
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  height: calc(100vh - 40px); /* 上下パディングを考慮 */
+  display: flex;
+  flex-direction: column;
+}
 
-  .importArea {
-    background-color: #ffffff; 
-    border-radius: 40px;
-    margin-bottom:10px;
-    padding: 40px 20px;
-  }
-  
-  .importButton {
-    background-color: #ffffff;
-    border: 1px dotted #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-  }
-  
-  
-  
-  .countArea {
-    background-color: #ffffff;
-    border-radius: 40px;
-    padding: 40px 20px;
-    margin-bottom:10px;
-  }
-  
-  .countArea p {
-    margin: 5px 0;
-  }
-  
-  .countArea span {
-    font-weight: bold;
-  }
-  
-  .registrationArea {
-    background-color: #008CBA; 
-    border-radius: 40px;
+.header {
+  display: flex;
+  margin-bottom: 10px;
+  gap: 20px;
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 20px 40px;
+  justify-content: space-between; /* ヘッダー内の要素を両端に配置 */
+}
 
-    text-align: center;
-  }
-  .registerButton {
+.titleDateContainer {
+  display: flex;
+  flex-direction: column; /* 縦並びにする */
+  gap: 10px; /* タイトルと日付の間隔 */
+  width: 40%; /* 必要に応じて調整 */
+}
 
-    background-color: #008CBA;
-    padding: 40px 20px;
-    border: none;
-    color: white;
-    width: 100%;
-    border-radius: 40px;
-  }
+.titleInputArea,
+.dateInputArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* titleDateContainer に合わせる */
+}
+
+.memoInputArea {
+  display: flex;
+  flex-direction: column;
+  width: 40%; /* 必要に応じて調整 */
+}
+
+.titleInputArea label,
+.memoInputArea label,
+.dateInputArea label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 100px;
+  resize: vertical;
+}
+
+.content {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+}
+
+.tableArea {
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 10px,0px,10px,10px;
+  overflow-y: auto;
+  flex: 1; /* 残りのスペースを埋める */
+  max-height: 345px; /* テーブルエリアの最大高さを設定 (例: 300px) */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 列幅を固定 */
+}
+
+.tableHeader th {
+  background-color: #fff;
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: none;
+  color: #555;
+}
+
+.tableRow td {
+  padding: 15px;
+  border-bottom: none;
+  color: #333;
+  white-space: nowrap; /* テキストの改行を防止 */
+  overflow: hidden; /* テキストが溢れた場合に隠す */
+  text-overflow: ellipsis; /* 溢れた部分を省略記号で表示 */
+}
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+  line-height: 1; /* 行間を詰める */
+}
+
+.furigana {
+  font-size: 0.7em; /* 文字サイズを小さく */
+  margin-bottom: 0; /* 下の間隔を削除 */
+  margin-left: 0; /*左の間隔を削除*/
+}
+.rightArea {
+  /*display: flex;*/
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.importArea {
+  background-color: #ffffff; 
+  border-radius: 40px;
+  margin-bottom:10px;
+  padding: 40px 20px;
+}
+
+.importButton {
+  background-color: #ffffff;
+  border: 1px dotted #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
 
 
+
+.countArea {
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 40px 20px;
+  margin-bottom:10px;
+}
+
+.countArea p {
+  margin: 5px 0;
+}
+
+.countArea span {
+  font-weight: bold;
+}
+
+.registrationArea {
+  background-color: #008CBA;
+  border-radius: 40px;
+  text-align: center;
+}
+
+.registerButton {
+  background-color: #008CBA;
+  padding: 20px;
+  border: none;
+  color: white;
+  width: 250px; /* 必要に応じて調整 */
+  border-radius: 40px;
+}
+
+/* 列幅の指定 */
+.table th:nth-child(1), /* 名前 */
+.table td:nth-child(1) {
+  width: 15%; /* 名前に適度な幅を確保 */
+}
 /*
-
-
+.table th:nth-child(2), /* フリガナ *//*
+.table td:nth-child(2) {
+  width: 15%; 
+}
 */
+.table th:nth-child(2), /* 性別 */
+.table td:nth-child(2) {
+  width: 7%; /* 性別は狭める */
+}
+
+.table th:nth-child(3), /* 高校名 */
+.table td:nth-child(3) {
+  width: 22%; /* 高校名を少し広めに */
+}
+
+.table th:nth-child(4), /* 学年 */
+.table td:nth-child(4) {
+  width: 7%; /* 学年は狭める */
+}
+
+.table th:nth-child(5), /* 参加学科 */
+.table td:nth-child(5) {
+  width: 26%; /* 参加学科 */
+}
+
+.table th:nth-child(6), /* 参加回数（最後の列） */
+.table td:nth-child(6) {
+  width: 8%; /* 参加回数は狭める */
+}

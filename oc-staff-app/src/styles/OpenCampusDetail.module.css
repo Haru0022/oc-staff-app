@@ -1,0 +1,167 @@
+.container {
+    padding: 20px;
+    margin-left: 20px;
+    background-color: #f0f0f0;
+    border-radius: 30px;
+    height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    display: flex;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .date {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    white-space: pre-line; /* 改行コードを反映 */
+  }
+  
+  .memo {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  .counts {
+    display: flex;
+    gap: 20px;
+    margin-left: 20px;
+  }
+  
+  .countButton {
+    background-color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .countButton.active {
+    background-color: #e0e0e0;
+  }
+  
+  .countButton span {
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .tableArea {
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tableHeader th,
+  .tableRow td {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .tableHeader th {
+    background-color: #fff;
+    border-bottom: none;
+  }
+  
+  .tableRow td {
+    color: #333;
+    border-bottom: none;
+    font-weight: normal;
+  }
+  
+  .tableRow:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .detailButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .detailIcon {
+    width: 20px;
+    height: 20px;
+    color: #888;
+  }
+  
+  .nameContainer {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  
+  .furigana {
+    font-size: 0.7em;
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+  
+  /* 列幅の指定 */
+  .table th:nth-child(1), /* 名前 */
+  .table td:nth-child(1) {
+    width: 20%;
+  }
+  
+  .table th:nth-child(2), /* 性別 */
+  .table td:nth-child(2) {
+    width: 10%;
+  }
+  
+  .table th:nth-child(3), /* 高校名 or 所属学科 */
+  .table td:nth-child(3) {
+    width: 30%;
+  }
+  
+  .table th:nth-child(4), /* 学年 */
+  .table td:nth-child(4) {
+    width: 10%;
+  }
+  
+  .table th:nth-child(5), /* 参加学科 */
+  .table td:nth-child(5) {
+    width: 25%;
+  }
+  
+  .table th:nth-child(6), /* 参加回数 */
+  .table td:nth-child(6) {
+    width: 10%;
+  }
+  
+  .table th:nth-child(7), /* 詳細 */
+  .table td:nth-child(7) {
+    width: 5%;
+  }

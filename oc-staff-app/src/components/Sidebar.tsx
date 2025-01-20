@@ -37,7 +37,7 @@ const Sidebar: React.FC = () => {
       </Link>
 
       {/* スタッフ一覧 */}
-      <Link href="/staffs">
+      <Link href="/staff">
         <div className={styles.menuItem}>
           <FaUserTie className={styles.icon} />
           {!isCollapsed && <span className={styles.text}>スタッフ一覧</span>}
