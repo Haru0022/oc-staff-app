@@ -63,7 +63,8 @@
     border-radius: 40px;
     padding: 10px,0px,10px,10px;
     overflow-y: auto; /* テーブルエリアをスクロール可能にする */
-    height: 550px; /*スクロールさせるテーブルの領域*/
+    /*height: 550px; /*スクロールさせるテーブルの領域*/
+    height:374px;
   }
   .table {
     width: 100%;
@@ -72,7 +73,7 @@
     background-color: #fff; /* テーブルの背景を白くする */
     
     /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* テーブルに影をつける */
-    
+    overflow: hidden;
   }
   
   .tableHeader th {

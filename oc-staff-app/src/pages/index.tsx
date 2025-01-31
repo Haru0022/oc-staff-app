@@ -1,6 +1,6 @@
 // src/pages/index.tsx
 import React from 'react';
-import Sidebar from '../components/Sidebar'; // Sidebar コンポーネントをインポート
+
 
 const Home: React.FC = () => {
   return (

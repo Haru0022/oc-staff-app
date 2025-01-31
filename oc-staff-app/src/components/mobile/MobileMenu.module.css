@@ -1,0 +1,21 @@
+/* components/mobile/MobileMenu.module.css */
+.menuContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff; /* 背景色を白に */
+    padding: 20px 10px; /* 上下左右にパディング */
+    border-top: 1px solid #ccc;
+  }
+  
+  .menuItem {
+    padding: 0.5rem; /* アイコンの周りにパディング */
+  }
+  
+  .icon {
+    color: #666; /* アイコンのデフォルトの色 */
+  }
+  
+  .activeIcon {
+    color: #0070f3; /* アクティブなアイコンの色 */
+  }

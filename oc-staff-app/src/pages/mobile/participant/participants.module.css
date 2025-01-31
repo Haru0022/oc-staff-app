@@ -1,0 +1,47 @@
+.container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .listItem {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .participantInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .participantName {
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+  
+  .participantSchool {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .participantGrade {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .participantSubject {
+    font-size: 0.9rem;
+  }

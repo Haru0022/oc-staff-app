@@ -15,8 +15,11 @@
 body {
   background-color: var(--background-color);
   color: var(--text-color);
+  /*overflow: hidden;*/
 }
-
+.mobile-background {
+  background-color: #fff; /* モバイル版の背景色を白に */
+}
 /* src/styles/globals.css */
 /*
 .appContainer {

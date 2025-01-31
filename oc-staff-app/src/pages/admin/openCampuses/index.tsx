@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from '../../styles/openCampuses.module.css';
+import styles from '../../../styles/openCampuses.module.css';
 import { collection, getDocs, Timestamp } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
+import { db } from '../../../lib/firebase';
 
 interface OpenCampus {
   id: string;
@@ -107,7 +107,7 @@ const OpenCampuses: React.FC = () => {
                 <td>{oc.participantsCount}</td>
                 <td>{oc.staffCount}</td>
                 <td>
-                  <Link href={`/openCampuses/detail/${oc.id}`}>
+                  <Link href={`/admin/openCampuses/detail/${oc.id}`}>
                     <button className={styles.detailButton}>
                       <svg
                         className={styles.detailIcon}

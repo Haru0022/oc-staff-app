@@ -1,14 +1,17 @@
+
 import React, { useState } from 'react'; // ReactとuseStateをインポート
 import { useRouter } from 'next/router'; // useRouterをインポート（Next.jsのルーティング機能を利用）
 import styles from '../../styles/openCampusesAdd.module.css'; // スタイルシートをインポート
 import { collection, addDoc, Timestamp, doc, setDoc, getDocs, query, where, increment, updateDoc } from 'firebase/firestore';
-import { db } from '../../lib/firebase'; // Firebaseの設定をインポート
+import { db } from '../../../lib/firebase'; // Firebaseの設定をインポート
 import * as XLSX from 'xlsx'; // Excelファイルを読み込むためのライブラリをインポート
-import Header from "../../components/OpenCampus/Add/Header";
-import Table from "../../components/OpenCampus/Add/Table";
-import ImportArea from "../../components/OpenCampus/Add/ImportArea";
-import CountArea from "../../components/OpenCampus/Add/CountArea";
-import RegisterButton from "../../components/OpenCampus/Add/RegisterButton";
+
+
+import Header from "../../../components/admin/OpenCampus/Header";
+import Table from "../../../components/admin/OpenCampus/Table";
+import ImportArea from "../../../components/admin/OpenCampus/ImportArea";
+import CountArea from "../../../components/admin/OpenCampus/CountArea";
+import RegisterButton from "../../../components/admin/OpenCampus/RegisterButton";
 
 // 参加者用のデータ型を定義
 type Member = {

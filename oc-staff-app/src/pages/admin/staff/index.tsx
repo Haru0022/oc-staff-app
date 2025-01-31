@@ -1,71 +1,91 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from '../../styles/participants.module.css';
+import styles from '../../../styles/staffs.module.css'; // staffs.module.css を使用
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
+import { db } from '../../../lib/firebase';
 
-interface Participant {
-  id: string; // Firestore ドキュメント ID 用のフィールドを追加
+interface Staff {
+  id: string;
   name: string;
   furigana: string;
   gender: string;
-  highSchool: string;
+  department: string;
   grade: string;
-  subject: string;
-  count: number;
+  pastEvents: PastEvent[];
 }
 
-const Participants: React.FC = () => {
-  const [participants, setParticipants] = useState<Participant[]>([]);
+interface PastEvent {
+  openCampusId: string;
+  date: Date;
+  role: string;
+}
+
+const Staffs: React.FC = () => {
+  const [staffs, setStaffs] = useState<Staff[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchParticipants = async () => {
+    const fetchStaffs = async () => {
       try {
-        const participantsCollectionRef = collection(db, 'participants');
-        const q = query(participantsCollectionRef); // 検索条件があればここで where を使う
-        const querySnapshot = await getDocs(q);
+        const staffsCollectionRef = collection(db, 'staffs');
+        const staffsQuery = query(staffsCollectionRef); // 必要に応じて where で条件を指定
+        const staffsSnapshot = await getDocs(staffsQuery);
 
-        const participantsData: Participant[] = [];
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          participantsData.push({
-            id: doc.id, // Firestore ドキュメント ID を追加
-            name: data.name,
-            furigana: data.furigana,
-            gender: data.gender,
-            highSchool: data.school,
-            grade: data.grade,
-            subject: data.subject,
-            count: data.count,
+        const staffsData: Staff[] = [];
+        for (const doc of staffsSnapshot.docs) {
+          const staffData = doc.data();
+          const pastEvents = await getPastEvents(doc.id);
+
+          staffsData.push({
+            id: doc.id,
+            name: staffData.name,
+            furigana: staffData.furigana,
+            gender: staffData.gender,
+            department: staffData.department,
+            grade: staffData.grade,
+            pastEvents: pastEvents,
           });
-        });
+        }
 
-        setParticipants(participantsData);
+        setStaffs(staffsData);
       } catch (error) {
-        console.error('Error fetching participants: ', error);
-        setError('参加者データの取得に失敗しました');
+        console.error('Error fetching staffs: ', error);
+        setError('スタッフデータの取得に失敗しました');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchParticipants();
+    fetchStaffs();
   }, []);
 
+  const getPastEvents = async (staffId: string): Promise<PastEvent[]> => {
+    const pastEventsRef = collection(db, 'staffs', staffId, 'pastEvents');
+    const pastEventsSnapshot = await getDocs(pastEventsRef);
+    return pastEventsSnapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id, // ここはイベントのIDを想定していますが、必要に応じて変更してください
+        openCampusId: data.openCampusId,
+        date: (data.date as any).toDate(), // Timestamp型をDate型に変換
+        role: data.role,
+      };
+    });
+  };
+
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className={styles.loading}>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className={styles.error}>Error: {error}</div>;
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.searchArea}>
-        <h1 className={styles.title}>参加者リスト</h1>
+        <h1 className={styles.title}>スタッフ一覧</h1>
         <div className={styles.searchBarContainer}>
           <div className={styles.searchBar}>
             <input
@@ -99,25 +119,22 @@ const Participants: React.FC = () => {
               <th>名前</th>
               <th>フリガナ</th>
               <th>性別</th>
-              <th>高校</th>
+              <th>所属学科</th>
               <th>学年</th>
-              <th>参加学科</th>
-              <th>参加回数</th>
               <th>詳細</th>
             </tr>
           </thead>
           <tbody>
-            {participants.map((participant) => (
-              <tr key={participant.id} className={styles.tableRow}>
-                <td>{participant.name}</td>
-                <td>{participant.furigana}</td>
-                <td>{participant.gender}</td>
-                <td>{participant.highSchool}</td>
-                <td>{participant.grade}</td>
-                <td>{participant.subject}</td>
-                <td>{participant.count}</td>
+            {staffs.map((staff) => (
+              <tr key={staff.id} className={styles.tableRow}>
+                <td>{staff.name}</td>
+                <td>{staff.furigana}</td>
+                <td>{staff.gender}</td>
+                <td>{staff.department}</td>
+                <td>{staff.grade}</td>
                 <td>
-                  <Link href={`/participant/detail/${participant.id}`}>
+                
+                <Link href={`/admin//staff/detail/${staff.id}`}>
                     <button className={styles.detailButton}>
                       <svg
                         className={styles.detailIcon}
@@ -146,4 +163,4 @@ const Participants: React.FC = () => {
   );
 };
 
-export default Participants;
+export default Staffs;

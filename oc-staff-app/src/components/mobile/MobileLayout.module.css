@@ -1,0 +1,14 @@
+/* components/mobile/MobileLayout.module.css */
+.mobileLayoutContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fff; /* お好みで背景色を設定 */
+    width: 100%; /* コンテナの幅を100%に設定 */
+  }
+  
+  .contentArea {
+    flex: 1;
+    overflow-y: auto;
+    width: 100%; /* コンテンツエリアの幅を100%に設定 */
+  }

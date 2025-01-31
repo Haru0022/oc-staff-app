@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# .gitignore
+oc-staff-app-firebase-adminsdk-hlv55-35690e0072.json

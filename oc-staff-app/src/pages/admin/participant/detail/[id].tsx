@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
-import styles from '../../../styles/ParticipantDetail.module.css';
+import styles from '../../../../styles/ParticipantDetail.module.css';
 import { doc, getDoc, collection, getDocs, Timestamp } from 'firebase/firestore';
-import { db } from '../../../lib/firebase';
+import { db } from '../../../../lib/firebase';
 
 interface PastEvent {
   id: string; // pastEvents の id を追加

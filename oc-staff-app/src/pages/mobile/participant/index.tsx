@@ -1,6 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
+import { db } from '../../../lib/firebase';
+import styles from './participants.module.css';
 
 interface Participant {
   id: string;
@@ -12,7 +13,7 @@ interface Participant {
 
 export const getStaticProps: GetStaticProps<{ participants: Participant[] }> = async () => {
   const participantsRef = collection(db, 'participants');
-  const q = query(participantsRef, orderBy('name', 'asc')); // 名前で昇順にソート (必要に応じて変更)
+  const q = query(participantsRef, orderBy('name', 'asc'));
   const querySnapshot = await getDocs(q);
 
   const participants: Participant[] = querySnapshot.docs.map((doc) => ({
@@ -27,26 +28,32 @@ export const getStaticProps: GetStaticProps<{ participants: Participant[] }> = a
     props: {
       participants,
     },
-    revalidate: 60, // データの再取得間隔 (秒) 必要に応じて変更
+    revalidate: 60,
   };
 };
 
 const MobileParticipantsPage = ({ participants }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div style={{ padding: '16px' }}>
-      <h1 style={{ marginBottom: '16px' }}>参加者一覧 (スマホ版)</h1>
-      <ul>
+    <div className={styles.container}>
+      <h1 className={styles.title}>参加者一覧</h1>
+      <ul className={styles.list}>
         {participants.map((participant) => (
-          <li key={participant.id} style={{ marginBottom: '8px', borderBottom: '1px solid #ccc', paddingBottom: '8px' }}>
-            <p>名前: {participant.name}</p>
-            <p>学校: {participant.school}</p>
-            <p>学年: {participant.grade}</p>
-            <p>参加学科: {participant.subject}</p>
+          <li key={participant.id} className={styles.listItem}>
+            <div className={styles.participantInfo}>
+              <span className={styles.participantName}>{participant.name}</span>
+              <span className={styles.participantGrade}>{participant.grade}</span>
+              <span className={styles.participantSubject}>{participant.subject}</span>
+            </div>
+            <div className={styles.participantInfo}>
+              <span className={styles.participantSchool}>{participant.school}</span>
+            </div>
           </li>
         ))}
       </ul>
     </div>
   );
 };
+
+MobileParticipantsPage.displayName = 'MobileParticipantsPage';
 
 export default MobileParticipantsPage;
