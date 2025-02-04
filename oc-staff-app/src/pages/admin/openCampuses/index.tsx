@@ -77,7 +77,7 @@ const OpenCampuses: React.FC = () => {
             </svg>
           </button>
         </div>
-        <Link href="/openCampuses/add">
+        <Link href="openCampuses/add">
           <button className={styles.addButton}>
             オープンキャンパス追加
           </button>

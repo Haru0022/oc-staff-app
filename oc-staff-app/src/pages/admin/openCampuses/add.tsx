@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'; // ReactとuseStateをインポート
 import { useRouter } from 'next/router'; // useRouterをインポート（Next.jsのルーティング機能を利用）
-import styles from '../../styles/openCampusesAdd.module.css'; // スタイルシートをインポート
+import styles from '../../../styles/openCampusesAdd.module.css'; // スタイルシートをインポート
 import { collection, addDoc, Timestamp, doc, setDoc, getDocs, query, where, increment, updateDoc } from 'firebase/firestore';
 import { db } from '../../../lib/firebase'; // Firebaseの設定をインポート
 import * as XLSX from 'xlsx'; // Excelファイルを読み込むためのライブラリをインポート

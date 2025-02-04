@@ -140,9 +140,29 @@ const AddUser: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.formHeader}>
+      <div className={styles.titleArea}>
         <h1 className={styles.title}>アカウント追加</h1>
+        <div> 
+          {/* 
+          <button type="button" onClick={handleAddRow} className={styles.addButton}>
+            行を追加
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              const event = new Event('submit', { bubbles: true, cancelable: true });
+              e.currentTarget.form?.dispatchEvent(event);
+              handleSubmit(event as unknown as React.FormEvent<HTMLFormElement>); // unknown を経由してキャスト
+            }}
+            disabled={loading}
+            className={styles.addButton}
+          >
+            {loading ? '作成中...' : '作成'}
+          </button>*/}
+
+        </div>
       </div>
+
       {error && <div className={styles.error}>{error}</div>}
       <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 200px)' }}>
         {/* formタグを追加 */}
@@ -226,7 +246,7 @@ const AddUser: React.FC = () => {
           </button>
           <button type="submit" disabled={loading} className={styles.addButton}>
             {loading ? '作成中...' : '作成'}
-          </button>
+          </button> 
         </form>
       </div>
     </div>

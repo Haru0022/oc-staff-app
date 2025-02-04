@@ -2,6 +2,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from '../../../lib/firebase';
 import styles from './participants.module.css';
+import Link from 'next/link';
 
 interface Participant {
   id: string;
@@ -32,22 +33,37 @@ export const getStaticProps: GetStaticProps<{ participants: Participant[] }> = a
   };
 };
 
-const MobileParticipantsPage = ({ participants }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const MobileParticipantsPage = ({
+  participants,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>参加者一覧</h1>
       <ul className={styles.list}>
         {participants.map((participant) => (
-          <li key={participant.id} className={styles.listItem}>
-            <div className={styles.participantInfo}>
-              <span className={styles.participantName}>{participant.name}</span>
-              <span className={styles.participantGrade}>{participant.grade}</span>
-              <span className={styles.participantSubject}>{participant.subject}</span>
-            </div>
-            <div className={styles.participantInfo}>
-              <span className={styles.participantSchool}>{participant.school}</span>
-            </div>
-          </li>
+          <Link
+            href={`/mobile/participant/detail/${participant.id}`}
+            key={participant.id}
+          >
+            <li className={styles.listItem}>
+              <div className={styles.participantInfo}>
+                <span className={styles.participantName}>
+                  {participant.name}
+                </span>
+                <span className={styles.participantGrade}>
+                  {participant.grade}
+                </span>
+                <span className={styles.participantSubject}>
+                  {participant.subject}
+                </span>
+              </div>
+              <div className={styles.participantInfo}>
+                <span className={styles.participantSchool}>
+                  {participant.school}
+                </span>
+              </div>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

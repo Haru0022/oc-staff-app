@@ -15,7 +15,7 @@ const Login: React.FC = () => {
 
     try {
       await signInWithEmailAndPassword(email, password);
-      router.push('/admin/user/add'); // ログイン成功後、管理者ページにリダイレクト
+      router.push('/admin/home'); // ログイン成功後、管理者ページにリダイレクト
     } catch (error) {
       console.error('Error signing in with email and password: ', error);
       setError('メールアドレスまたはパスワードが間違っています');

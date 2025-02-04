@@ -1,55 +1,44 @@
-// components/mobile/MobileMenu.tsx
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FaHome, FaUsers, FaCalendarAlt, FaUserTie } from 'react-icons/fa';
-import styles from './MobileMenu.module.css'; // CSS モジュールをインポート
+import { FaHome, FaUsers, FaCalendarAlt, FaUserTie, FaUserPlus } from 'react-icons/fa';
+import styles from './MobileMenu.module.css'; // CSSモジュールをインポート
 
 const MobileMenu: React.FC = () => {
   const router = useRouter();
 
   return (
     <div className={styles.menuContainer}>
-      <Link href="/mobile/participants" className={styles.menuItem}>
-        <FaUsers
-          size={24}
-          className={
-            router.pathname === '/mobile/participants'
-              ? styles.activeIcon
-              : styles.icon
-          }
-        />
-      </Link>
-      <Link href="/" className={styles.menuItem}>
-        <FaHome
-          size={24}
-          className={router.pathname === '/' ? styles.activeIcon : styles.icon}
-        />
-      </Link>
-      <Link href="/admin" className={styles.menuItem}>
-        <FaUserTie
-          size={24}
-          className={
-            router.pathname === '/admin' ? styles.activeIcon : styles.icon
-          }
-        />
-      </Link>
-      <Link
-        href="/admin"
-        className={`p-2 ${
-          router.pathname === '/admin' ? 'text-blue-500' : ''
-        }`}
-      >
-        <FaUserTie size={24} />
+      {/* ホーム */}
+      <Link href="/mobile/home" passHref legacyBehavior>
+        <div className={`${styles.menuItem} ${router.pathname === '/mobile/home' ? styles.active : ''}`}>
+          <FaHome className={styles.icon} />
+          <span className={styles.text}>ホーム</span>
+        </div>
       </Link>
 
-      <Link
-        href="/admin"
-        className={`p-2 ${
-          router.pathname === '/admin' ? 'text-blue-500' : ''
-        }`}
-      >
-        <FaCalendarAlt size={24} />
+      {/* 参加者一覧 */}
+      <Link href="/mobile/participant" passHref legacyBehavior>
+        <div className={`${styles.menuItem} ${router.pathname === '/mobile/participant' ? styles.active : ''}`}>
+          <FaUsers className={styles.icon} />
+          <span className={styles.text}>参加者</span>
+        </div>
+      </Link>
+
+      {/* オープンキャンパス一覧 */}
+      <Link href="/mobile/openCampuses" passHref legacyBehavior>
+        <div className={`${styles.menuItem} ${router.pathname === '/mobile/openCampuses' ? styles.active : ''}`}>
+          <FaCalendarAlt className={styles.icon} />
+          <span className={styles.text}>OC</span>
+        </div>
+      </Link>
+
+      {/* スタッフ一覧 */}
+      <Link href="/mobile/staff" passHref legacyBehavior>
+        <div className={`${styles.menuItem} ${router.pathname === '/mobile/staff' ? styles.active : ''}`}>
+          <FaUserTie className={styles.icon} />
+          <span className={styles.text}>スタッフ</span>
+        </div>
       </Link>
     </div>
   );

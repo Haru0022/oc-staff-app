@@ -162,7 +162,7 @@ const Users: React.FC = () => {
         <h1 className={styles.title}>アカウント管理</h1>
 
         {/* アカウント追加ページへのリンク */}
-        <Link href="/admin/users/add">
+        <Link href="/admin/user/add">
           <button>アカウント追加</button>
         </Link>
       </div>

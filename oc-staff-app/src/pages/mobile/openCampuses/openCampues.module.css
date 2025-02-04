@@ -1,0 +1,62 @@
+/* pages/mobile/index.module.css */
+.container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .listItem {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .openCampusInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .openCampusTitle {
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+  
+  .openCampusDate {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .openCampusCounts {
+    display: flex;
+    justify-content: space-between; /* または space-around */
+    margin-top: 0.5rem;
+  }
+  
+  .count {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .error {
+    text-align: center;
+    padding: 1rem;
+    color: red;
+  }

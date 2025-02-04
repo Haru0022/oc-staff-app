@@ -82,7 +82,8 @@
     padding: 10px,0px,10px,10px;
     /*height:550px;*/
     overflow-y: auto; /* テーブルエリアをスクロール可能にする */
-    height: 374px; /*スクロールさせるテーブルの領域*/
+    /*height: 374px; /*スクロールさせるテーブルの領域*/
+    height:400px;
 
     
   }

@@ -1,0 +1,107 @@
+/* 必要に応じてスタイルを記述 */
+.container {
+  padding: 1rem;
+}
+
+.header {
+margin-bottom: 1rem;
+}
+
+.info {
+margin-bottom: 0.5rem;
+}
+
+.date {
+font-size: 0.9rem;
+color: #555;
+margin-bottom: 0.5rem;
+}
+
+.title {
+font-size: 1.5rem;
+font-weight: bold;
+margin-bottom: 0.5rem;
+}
+
+.memo {
+font-size: 0.9rem;
+color: #555;
+}
+
+.counts {
+display: flex;
+margin-top: 1rem;
+}
+
+.countButton {
+background-color: #f0f0f0;
+border: none;
+padding: 0.5rem 1rem;
+border-radius: 0.25rem;
+cursor: pointer;
+margin-right: 0.5rem;
+}
+
+.countButton.active {
+background-color: #0070f3;
+color: #fff;
+}
+
+.countButton span {
+font-size: 0.9rem;
+margin-left: 0.25rem;
+}
+
+
+.list {
+list-style: none;
+padding: 0;
+}
+
+.listItem {
+background-color: #fff;
+border: 1px solid #eee;
+border-radius: 0.5rem;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+padding: 1rem;
+margin-bottom: 1rem;
+}
+
+.memberInfo {
+display: flex;
+align-items: center;
+margin-bottom: 0.5rem;
+}
+
+.memberName {
+font-weight: bold;
+margin-right: 0.5rem;
+}
+
+.memberFurigana {
+font-size: 0.8rem;
+color: #555;
+margin-left: auto; /* 名前とフリガナを分ける */
+}
+
+.memberGender {
+margin-right: 0.5rem;
+font-size: 0.9rem;
+}
+
+.memberSubInfo {
+font-size: 0.9rem;
+color: #555;
+margin-right: 0.5rem;
+}
+
+.loading {
+text-align: center;
+padding: 1rem;
+}
+
+.error {
+text-align: center;
+padding: 1rem;
+color: red;
+}

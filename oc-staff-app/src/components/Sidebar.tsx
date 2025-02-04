@@ -33,7 +33,7 @@ const Sidebar: React.FC = () => {
       </button>
 
       {/* ホーム */}
-      <Link href="/">
+      <Link href="/admin/home">
         <div className={styles.menuItem}>
           <FaHome className={styles.icon} />
           {!isCollapsed && <span className={styles.text}>ホーム</span>}
@@ -77,11 +77,18 @@ const Sidebar: React.FC = () => {
         {!isCollapsed && <span className={styles.text}>データ更新</span>}
       </button>*/}
 
-      {/* ログアウトボタン */}
+      {/* ログアウトボタン 
       <button onClick={handleLogout} className={styles.menuItem}>
         <FaSignOutAlt className={styles.icon} />
         {!isCollapsed && <span className={styles.text}>ログアウト</span>}
-      </button>
+      </button>*/}
+
+      <Link href="#"> 
+        <div onClick={handleLogout} className={styles.menuItem}>
+          <FaSignOutAlt className={styles.icon} />
+          {!isCollapsed && <span className={styles.text}>ログアウト</span>}
+        </div>
+      </Link>
     </div>
   );
 };

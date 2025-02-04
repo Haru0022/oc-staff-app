@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from '../../../styles/staffs.module.css'; // staffs.module.css を使用
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import styles from '../../../styles/staffs.module.css';
+import { collection, query, getDocs } from 'firebase/firestore';
 import { db } from '../../../lib/firebase';
 
 interface Staff {
@@ -11,19 +11,17 @@ interface Staff {
   gender: string;
   department: string;
   grade: string;
-  pastEvents: PastEvent[];
+  // pastEvents プロパティを削除
 }
 
-interface PastEvent {
-  openCampusId: string;
-  date: Date;
-  role: string;
-}
+// PastEvent インターフェースも不要なので削除
 
 const Staffs: React.FC = () => {
   const [staffs, setStaffs] = useState<Staff[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [inputValue, setInputValue] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
     const fetchStaffs = async () => {
@@ -35,7 +33,7 @@ const Staffs: React.FC = () => {
         const staffsData: Staff[] = [];
         for (const doc of staffsSnapshot.docs) {
           const staffData = doc.data();
-          const pastEvents = await getPastEvents(doc.id);
+          // getPastEvents の呼び出しを削除
 
           staffsData.push({
             id: doc.id,
@@ -44,7 +42,7 @@ const Staffs: React.FC = () => {
             gender: staffData.gender,
             department: staffData.department,
             grade: staffData.grade,
-            pastEvents: pastEvents,
+            // pastEvents へのデータ格納を削除
           });
         }
 
@@ -60,19 +58,20 @@ const Staffs: React.FC = () => {
     fetchStaffs();
   }, []);
 
-  const getPastEvents = async (staffId: string): Promise<PastEvent[]> => {
-    const pastEventsRef = collection(db, 'staffs', staffId, 'pastEvents');
-    const pastEventsSnapshot = await getDocs(pastEventsRef);
-    return pastEventsSnapshot.docs.map((doc) => {
-      const data = doc.data();
-      return {
-        id: doc.id, // ここはイベントのIDを想定していますが、必要に応じて変更してください
-        openCampusId: data.openCampusId,
-        date: (data.date as any).toDate(), // Timestamp型をDate型に変換
-        role: data.role,
-      };
-    });
+  // getPastEvents 関数自体を削除
+
+  // 検索実行用の関数
+  const performSearch = () => {
+    setSearchQuery(inputValue);
   };
+
+  // 検索キーワードに基づいてデータをフィルタリング
+  const filteredStaffs = searchQuery === ''
+    ? staffs
+    : staffs.filter((staff) => {
+        const searchableText = `${staff.name} ${staff.furigana} ${staff.department}`;
+        return searchableText.toLowerCase().includes(searchQuery.toLowerCase());
+      });
 
   if (loading) {
     return <div className={styles.loading}>Loading...</div>;
@@ -92,8 +91,10 @@ const Staffs: React.FC = () => {
               type="text"
               placeholder="検索..."
               className={styles.searchInput}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
             />
-            <button className={styles.searchButton}>
+            <button className={styles.searchButton} onClick={performSearch}>
               <svg
                 className={styles.searchIcon}
                 xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +126,7 @@ const Staffs: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {staffs.map((staff) => (
+            {filteredStaffs.map((staff) => (
               <tr key={staff.id} className={styles.tableRow}>
                 <td>{staff.name}</td>
                 <td>{staff.furigana}</td>
@@ -133,8 +134,7 @@ const Staffs: React.FC = () => {
                 <td>{staff.department}</td>
                 <td>{staff.grade}</td>
                 <td>
-                
-                <Link href={`/admin//staff/detail/${staff.id}`}>
+                  <Link href={`/admin/staff/detail/${staff.id}`}>
                     <button className={styles.detailButton}>
                       <svg
                         className={styles.detailIcon}

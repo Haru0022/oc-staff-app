@@ -1,0 +1,73 @@
+.container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .profileContainer {
+    margin-bottom: 1rem;
+  }
+  
+  .profileItem {
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+  
+  .profileLabel {
+    font-weight: bold;
+    margin-right: 0.5rem;
+    width: 5rem; /* ラベルの幅を固定 */
+  }
+  
+  .profileValue {
+    color: #555;
+  }
+  
+  .pastEventsTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .pastEventsList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pastEventItem {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .eventInfo {
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+  
+  .eventLabel {
+    font-weight: bold;
+    margin-right: 0.5rem;
+    width: 8rem; /* ラベルの幅を固定 */
+  }
+  
+  .eventValue {
+    color: #555;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .error {
+    text-align: center;
+    padding: 1rem;
+    color: red;
+  }
