@@ -1,4 +1,8 @@
 /* src/styles/Sidebar.module.css */
+:root {
+  --bs-body-font-family: inherit; /* フォントファミリーのリセットを無効化 */
+  --bs-body-font-size: inherit; /* フォントサイズのリセットを無効化 */
+}
 
 /* サイドバーのスタイル */
 .sidebar {

@@ -8,7 +8,7 @@ import '../styles/globals.css';
 import { DataProvider } from '../admin/context/DataContext';
 import { AuthProvider, useAuth  } from '../admin/context/AuthContext'; // AuthProviderをインポート
 import { useEffect } from 'react';
-
+//import 'bootstrap/dist/css/bootstrap.min.css'; // BootstrapのCSSを読み込み
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isAdmin = router.pathname.startsWith('/admin');

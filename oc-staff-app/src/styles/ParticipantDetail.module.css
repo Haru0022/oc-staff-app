@@ -40,3 +40,65 @@
   .profileValue {
     color: #333;
   }
+  .accordion {
+    width: 100%;
+  }
+  
+  .accordion-body div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .memoContainer {
+    display: flex;
+    flex-direction: column; /* 縦並びに変更 */
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .memoContainer textarea {
+    flex-grow: 1;
+    margin-right: 10px;
+    margin-bottom: 5px; /* 下に余白を追加 */
+  }
+
+  /* ... */
+
+  .memoContainer textarea {
+    flex-grow: 1;
+    margin-right: 0;
+    margin-bottom: 5px;
+    background-color: #f5f5f5; /* 背景色 */
+    border: 1px solid #ccc; /* 枠線 */
+    border-radius: 4px; /* 角丸 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影 */
+    font-size: 14px; /* フォントサイズ */
+    line-height: 1.5; /* 行の高さ */
+    color: #333; /* 文字色 */
+    padding: 10px; /* 内側の余白 */
+    width: calc(100% - 22px); /* ボタンの幅と余白を考慮した幅 */
+  }
+  
+  .memoContainer .delete-link {
+    font-size: 14px;
+    color: #f00;
+    text-decoration: underline;
+    margin-left: 10px;
+  }
+  
+  .memoContainer .delete-link:hover {
+    text-decoration: none;
+  }
+  
+  .memoContainer .save-link {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: underline;
+    margin-left: 10px;
+  }
+  
+  .memoContainer .save-link:hover {
+    text-decoration: none;
+  }
