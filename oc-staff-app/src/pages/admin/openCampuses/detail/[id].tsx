@@ -176,7 +176,7 @@ const OpenCampusDetail: React.FC = () => {
           <thead>
             <tr className={styles.tableHeader}>
               <th>名前</th>
-              {displayData === 'staffs' && <th>フリガナ</th>}
+              {/*{displayData === 'staffs' && <th>フリガナ</th>}*/}
               <th>性別</th>
               <th>
                 {displayData === 'participants' ? '高校名' : '所属学科'}

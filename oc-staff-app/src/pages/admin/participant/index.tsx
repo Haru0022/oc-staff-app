@@ -115,7 +115,7 @@ const Participants: React.FC = () => {
               <th>性別</th>
               <th>高校</th>
               <th>学年</th>
-              <th>参加学科</th>
+              {/*<th>参加学科</th>*/}
               <th>参加回数</th>
               <th>詳細</th>
             </tr>
@@ -129,7 +129,7 @@ const Participants: React.FC = () => {
                 <td>{participant.gender}</td>
                 <td>{participant.highSchool}</td>
                 <td>{participant.grade}</td>
-                <td>{participant.subject}</td>
+                {/*<td>{participant.subject}</td>*/}
                 <td>{participant.count}</td>
                 <td>
                   {/* 詳細ページへのリンクは `/admin` を含めたパスに修正 */}

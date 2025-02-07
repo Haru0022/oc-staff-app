@@ -1,0 +1,55 @@
+/* pages/mobile/staff.module.css */
+/* 参加者一覧のCSS (participants.module.css) をコピーして、必要に応じて修正 */
+.container {
+    padding: 1rem;
+  }
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.staffInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.staffName {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  width: 100%;
+}
+
+.staffFurigana {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+  width: 100%;
+}
+.staffGrade {
+    margin-right: 0.5rem;
+}
+.staffDepartment{
+    margin-right: 0.5rem;
+}
+.staffRole{
+    margin-right: 0.5rem;
+}

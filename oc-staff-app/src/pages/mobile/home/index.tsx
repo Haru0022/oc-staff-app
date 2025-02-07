@@ -5,10 +5,10 @@ import React from 'react';
 const Home: React.FC = () => {
   return (
     <div>
-      <main style={{ marginLeft: '250px', padding: '20px' }}> {/* サイドバーの幅に合わせて調整 */}
+      <main> {/* サイドバーの幅に合わせて調整 */}
         <h1>ホーム</h1>
-        {/* ここにメインコンテンツを追加 */}
-        <p>ここに表示したい内容を書いていきます。</p>
+        {/* ここにメインコンテンツを追加 
+        <p>ここに表示したい内容を書いていきます。</p>*/}
       </main>
     </div>
   );

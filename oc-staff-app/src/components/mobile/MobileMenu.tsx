@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FaHome, FaUsers, FaCalendarAlt, FaUserTie, FaUserPlus } from 'react-icons/fa';
+import { FaHome, FaUsers, FaCalendarAlt, FaUserTie, FaUserCircle } from 'react-icons/fa'; // FaUserCircle を追加
 import styles from './MobileMenu.module.css'; // CSSモジュールをインポート
 
 const MobileMenu: React.FC = () => {
@@ -38,6 +38,14 @@ const MobileMenu: React.FC = () => {
         <div className={`${styles.menuItem} ${router.pathname === '/mobile/staff' ? styles.active : ''}`}>
           <FaUserTie className={styles.icon} />
           <span className={styles.text}>スタッフ</span>
+        </div>
+      </Link>
+
+      {/* マイページ */}
+      <Link href="/mobile/myPage" passHref legacyBehavior>
+        <div className={`${styles.menuItem} ${router.pathname === '/mobile/myPage' ? styles.active : ''}`}>
+          <FaUserCircle className={styles.icon} /> {/* FaUserCircle アイコンを使用 */}
+          <span className={styles.text}>マイページ</span>
         </div>
       </Link>
     </div>
