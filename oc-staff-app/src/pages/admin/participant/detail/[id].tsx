@@ -199,7 +199,7 @@ const ParticipantDetail: React.FC = () => {
                       )}
                     </div>
                   ))}
-                  <Button variant="secondary" onClick={() => handleAddMemo(event.id)}>メモを追加</Button>
+                  {/*<Button variant="secondary" onClick={() => handleAddMemo(event.id)}>メモを追加</Button>*/}
                 </div>
               </div>
               <Link href={`/admin/openCampuses/detail/${event.openCampusId}`}>
